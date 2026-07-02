@@ -53,15 +53,27 @@ DVS Event Stream (128×128, 2 polarities)
 ## Results — DailyAction-DVS LOSO Benchmark
 
 **Dataset**: DailyAction-DVS — 1,440 recordings, 12 action classes, DVS128 sensor (128×128)  
-**Split**: Leave-One-Subject-Out (strict subject separation, no data leakage)
+**Split**: Leave-One-Subject-Out (strict subject separation, no data leakage)  
+**Train set**: 1,049 samples | **Test set**: 398 samples
 
-| Model | Val Accuracy | Learning Rule | Parameters |
+### SPA-SNN Evolution (same dataset and split)
+
+| Phase | Architecture | Val Accuracy | Learning Rule |
 |---|---|---|---|
-| ResNet-18 (CNN baseline) | 60.7% | Adam + BPTT | 11.6M |
-| SNN with BPTT | 46.0% | Backprop Through Time | ~2M |
-| SPA-SNN Phase 1 (R-STDP baseline) | 39.1% | R-STDP only | ~2M |
-| SPA-SNN Phase 2 (multi-scale RF) | 48.0% | STDP + SPA | ~2M |
-| **SPA-SNN Final (Deep E-Prop)** | **89.2%** | **STDP + E-Prop** | **~2M** |
+| Phase 1 | R-STDP baseline (single-scale RF, r=15) | 39.1% | R-STDP only |
+| Phase 2 | Multi-scale RF (r=6,10,16) + SPA | 48.0% | STDP + SPA |
+| Phase 3 | Hierarchical L1+L2 motif learning | 46.4% | STDP + SPA |
+| **Final** | **Deep E-Prop (this repo)** | **89.2%** | **STDP + E-Prop** |
+
+### CNN Baseline (different dataset — for reference only)
+
+> ⚠️ The following was trained on **DailyDVS** (420 samples, no LOSO), not on DailyAction-DVS. Included for architectural comparison only.
+
+| Model | Val Accuracy | Dataset | Learning Rule | Parameters |
+|---|---|---|---|---|
+| ResNet-18 | 60.7% | DailyDVS (420 samples) | Adam + BPTT | 11.6M |
+| SNN (BPTT) | 46.0% | DailyDVS / PAFall | Backprop Through Time | ~2M |
+| **SPA-SNN (ours)** | **89.2%** | **DailyAction-DVS LOSO** | **STDP + E-Prop** | **~2M** |
 
 ### Per-Class Performance (SOTA checkpoint)
 
