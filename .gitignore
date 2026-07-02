@@ -1,0 +1,63 @@
+# ── Trained model weights (too large for GitHub) ──────────────────────────────
+*.pt
+*.pth
+
+# ── Datasets (must be downloaded separately) ──────────────────────────────────
+*.h5
+*.hdf5
+
+# ── Checkpoint directories ────────────────────────────────────────────────────
+ckpts_*/
+
+# ── Python cache ──────────────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# ── Virtual environments ──────────────────────────────────────────────────────
+env/
+venv/
+red/
+.venv/
+
+# ── Logs and temp outputs ─────────────────────────────────────────────────────
+*.log
+*.txt
+sparsity_log.txt
+full_train_log.txt
+
+# ── Visualizations & media ────────────────────────────────────────────────────
+*.png
+*.gif
+*.mp4
+*.webp
+rf_viz/
+
+# ── Inference / hardware-specific scripts ─────────────────────────────────────
+Live_Inference.py
+aedat_loader.py
+
+# ── Diagnostic / utility scripts (not part of core pipeline) ──────────────────
+check_*.py
+inspect_*.py
+play_*.py
+verify_*.py
+test_*.py
+debug_*.py
+scan_*.py
+hot_pixel_hunter.py
+analyze_activity_windows.py
+profile_snn.py
+visualize_*.py
+render_*.py
+benchmark_loader.py
+download_dvs_gesture.py
+tsne_actions.png
+
+# ── IDE ───────────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.suo
+*.user
